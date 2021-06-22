@@ -28,5 +28,6 @@ app.use("/admin", timerRoutes)
 
 //starting server
 app.listen("3001", () => {
+    console.log("backend working");
     console.log("server started")
 })
