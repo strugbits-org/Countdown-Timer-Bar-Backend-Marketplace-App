@@ -1,4 +1,6 @@
 var timerSchema = require("../models/timerSchema");
+var input = require('../models/inputfield');
+var instance_Key = require('../models/instanceid')
 //var targetSchema = require("../models/targetconfiguration")
 
 //creating timer by adding adta in db
@@ -104,4 +106,39 @@ exports.fetchSingleTimer = (req,res,next) => {
         res.status(400).json({msg: "Error"})
     }
    
+}
+
+//testing input field data
+exports.inputFieldData = async (req, res,next) => {
+    try{
+        console.log(req.body, "input field data");
+        const data = new input({
+            name: req.body.name
+        })
+        await data.save();
+        console.log("data saved");
+        res.status(200).json({inputData: data})
+
+    }catch(err){
+        console.log(err);
+        res.status(400).json({msg: "Error coming!"})
+    }
+};
+
+//testing for saving instance Id 
+exports.getInstanceId = (req, res, next) => {
+    try{
+        console.log(req.body);
+        const instanceKey = new instance_Key({
+            instanceKey: req.bosy.id
+        });
+        await instanceKey.save();
+        res.status(200).json({instanceKey: instanceKey})
+
+    }catch(err){
+          console.log(err);
+          res.status(400).json({msg: "Error!"})
+    }
+
+
 }

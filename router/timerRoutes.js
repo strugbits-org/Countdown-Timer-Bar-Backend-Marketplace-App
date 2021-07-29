@@ -16,7 +16,13 @@ router.get("/gettimer", timerController.fetchTimer);
 router.post("/updatetimer", timerController.updateTimer);
 
 //get a single timer through id
-router.get("/singleTimer", timerController.fetchSingleTimer)
+router.get("/singleTimer", timerController.fetchSingleTimer);
+
+//get a input field data
+router.post('/inputfield', timerController.inputFieldData);
+
+//saving instance id
+router.post('/postinstanceId', timerController.getInstanceId)
 
 
 
