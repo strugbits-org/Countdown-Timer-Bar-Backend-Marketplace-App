@@ -126,11 +126,11 @@ exports.inputFieldData = async (req, res,next) => {
 };
 
 //testing for saving instance Id 
-exports.getInstanceId = (req, res, next) => {
+exports.getInstanceId = async (req, res, next) => {
     try{
-        console.log(req.body);
+        console.log(req.body.id);
         const instanceKey = new instance_Key({
-            instanceKey: req.bosy.id
+            instanceKey: req.body.id
         });
         await instanceKey.save();
         res.status(200).json({instanceKey: instanceKey})
